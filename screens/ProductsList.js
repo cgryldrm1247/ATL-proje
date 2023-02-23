@@ -9,7 +9,6 @@ function ProductsList() {
   const navigation = useNavigation();
   const { user, logout } = useContext(CartContext);
   function renderProduct({ item: product }) {
-    console.log(product,'aaaaaaaaaaaaa');
     return (
       <Product
         {...product}

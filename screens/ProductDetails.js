@@ -14,13 +14,7 @@ import { CartContext } from "../CartContext";
 function ProductDetails({ route }) {
   const { productId } = route.params;
   const [product, setProduct] = useState({});
-  const getItem = async (productId) => {
-    const data = await getProduct(productId);
-    setProduct(data);
-  };
-  useEffect(() => {
-    getItem(productId);
-  }, []);
+
 
   const { addItemToCart } = useContext(CartContext);
 
@@ -28,11 +22,19 @@ function ProductDetails({ route }) {
     addItemToCart(product.id);
   }
 
+  useEffect(() => {
+    async function getItem(productId) {
+      const data = await getProduct(productId);
+      setProduct(data);
+    }
+    getItem(productId);
+  }, []);
+
   return (
     <SafeAreaView>
       <ScrollView>
         <View style={styles.imageContainer}>
-          <Image style={styles.image} source={product.images} />
+          <Image style={styles.image} source={{uri: product.thumbnail}} />
         </View>
         <View style={styles.infoContainer}>
           <Text style={styles.name}>{product.title}</Text>
@@ -52,7 +54,7 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
   },
   image: {
-    width: "100%",
+    width: "50%",
     aspectRatio: 1,
   },
   infoContainer: {

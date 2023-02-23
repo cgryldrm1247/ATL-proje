@@ -5,12 +5,11 @@ import { CartContext } from "../CartContext";
 export default function Cart() {
   const { items, getItemsCount, getTotalPrice } = useContext(CartContext);
 
-
   function Totals() {
     let [total, setTotal] = useState(0);
     useEffect(() => {
       setTotal(getTotalPrice());
-    });
+    }, [getTotalPrice]);
     return (
       <View style={styles.cartLineTotal}>
         <Text style={[styles.lineLeft, styles.lineTotal]}></Text>
@@ -18,7 +17,7 @@ export default function Cart() {
       </View>
     );
   }
-  function renderItem({item}) {
+  function renderItem({ item }) {
     console.log(item);
 
     return (
@@ -35,14 +34,14 @@ export default function Cart() {
   }
 
   return (
-
-    
     <FlatList
       style={styles.itemsList}
       contentContainerStyle={styles.contentContainer}
       data={items}
       renderItem={renderItem}
-      keyExtractor={(item) => item.product.id.toString()}
+      keyExtractor={(item) =>
+        item.product.id ? item.product.id.toString() : ""
+      }
       ListFooterComponent={Totals}
     />
   );
