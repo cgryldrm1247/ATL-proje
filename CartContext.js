@@ -15,26 +15,23 @@ export const CartContext = createContext();
   };
 
 
-  function addItemToCart(id) {
-    const product = getProduct(id);
-    console.log(product);
+  function addItemToCart(product) {
     setItems((prevItems) => {
-      const item = prevItems.find((item) => item.id == id);
+      const item = prevItems.find((item) => item.id == product.id);
       if (!item) {
         return [
           ...prevItems,
           {
-            id,
+            id: product.id,
             qty: 1,
             product,
             totalPrice: product.price,
             images: product.images,
-
           },
         ];
       } else {
         return prevItems.map((item) => {
-          if (item.id == id) {
+          if (item.id == product.id) {
             item.qty = item.qty + 1;
             item.totalPrice += item.product.price;
           }
@@ -43,6 +40,7 @@ export const CartContext = createContext();
       }
     });
   }
+  
 
   function getItemsCount() {
     return items.reduce((sum, item) => sum + item.qty, 0);

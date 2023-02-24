@@ -3,6 +3,7 @@ import React, { useContext } from "react";
 import { Text, Image, View, StyleSheet, TouchableOpacity } from "react-native";
 import CartContext from "../CartContext";
 
+
 export function Product(props) {
   const {
     brand,
@@ -25,7 +26,7 @@ export function Product(props) {
         <Text style={styles.favoruite}
           onPress={
             user
-              ? () => navigation.navigate("Welcome")
+              ? () => []
               : () => navigation.navigate("Welcome")
           }
         >

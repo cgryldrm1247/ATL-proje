@@ -13,7 +13,7 @@ const Welcome = () => {
   return (
     <View style={styles.welcomeContainer}>
       <Text style={styles.login} onPress={login}>
-        Giriş Yap
+        Giriş Yap, üye ol
       </Text>
       <Text
         style={styles.logout}

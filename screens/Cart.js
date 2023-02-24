@@ -1,9 +1,9 @@
 import React, { useContext, useState, useEffect } from "react";
-import { View, Image, Text, Button, FlatList, StyleSheet } from "react-native";
+import { View, Image, Text, FlatList, StyleSheet } from "react-native";
 import { CartContext } from "../CartContext";
 
 export default function Cart() {
-  const { items, getItemsCount, getTotalPrice } = useContext(CartContext);
+  const { items, getTotalPrice } = useContext(CartContext);
 
   function Totals() {
     let [total, setTotal] = useState(0);
@@ -18,18 +18,17 @@ export default function Cart() {
     );
   }
   function renderItem({ item }) {
-    console.log(item);
-
     return (
-      <>
-        <View stlye={styles.cartLine}>
-          <Image style={styles.image} source={item.product.images} />
-          <Text style={styles.lineLeft}>
-            {item.product.title} x {item.qty}
-            <Text style={styles.productTotal}>{item.totalPrice} tl</Text>
-          </Text>
-        </View>
-      </>
+      <View stlye={styles.cartLine}>
+        <Image style={styles.image} source={{ uri: item.images[0] }} />
+        <Text style={styles.name}>{item.title}</Text>
+        <Text style={styles.description}>{item.description}</Text>
+
+        <Text style={styles.lineLeft}>
+          {item.product ? item.product.title : "No title"} x {item.qty}
+          <Text style={styles.productTotal}> = {item.totalPrice} tl</Text>
+        </Text>
+      </View>
     );
   }
 
@@ -74,7 +73,7 @@ const styles = StyleSheet.create({
   lineLeft: {
     fontSize: 20,
     lineHeight: 40,
-    color: "#333333",
+    color: "blue",
   },
   lineTotal: {
     fontWeight: "bold",
@@ -88,8 +87,19 @@ const styles = StyleSheet.create({
     borderTopColor: "#dddddd",
     borderTopWidth: 1,
   },
+  description: {
+    fontSize: 18,
+    fontWeight: "400",
+    color: "#787878",
+    marginBottom: 16,
+  },
+  name: {
+    fontSize: 22,
+    fontWeight: "bold",
+  },
   image: {
-    width: "25%",
+    height: 200,
+    width: 400,
     aspectRatio: 1,
     marginRight: 5,
   },

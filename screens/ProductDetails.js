@@ -15,11 +15,10 @@ function ProductDetails({ route }) {
   const { productId } = route.params;
   const [product, setProduct] = useState({});
 
-
   const { addItemToCart } = useContext(CartContext);
 
   function onAddToCart() {
-    addItemToCart(product.id);
+    addItemToCart(product);
   }
 
   useEffect(() => {
@@ -34,7 +33,7 @@ function ProductDetails({ route }) {
     <SafeAreaView>
       <ScrollView>
         <View style={styles.imageContainer}>
-          <Image style={styles.image} source={{uri: product.thumbnail}} />
+          <Image style={styles.image} source={{ uri: product.thumbnail }} />
         </View>
         <View style={styles.infoContainer}>
           <Text style={styles.name}>{product.title}</Text>
