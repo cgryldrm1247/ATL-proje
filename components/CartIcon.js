@@ -8,7 +8,7 @@ import { CartContext } from "../CartContext";
   return (
     <View style={styles.container}>
       <Text style={styles.text} onPress={() => navigation.navigate("Cart")}>
-        Cart ({getItemsCount()})
+        Sepet ({getItemsCount()})
       </Text>
     </View>
   );
