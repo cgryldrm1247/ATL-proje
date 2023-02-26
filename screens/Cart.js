@@ -7,9 +7,11 @@ export default function Cart() {
 
   function Totals() {
     let [total, setTotal] = useState(0);
+
     useEffect(() => {
       setTotal(getTotalPrice());
     }, [getTotalPrice]);
+
     return (
       <View style={styles.cartLineTotal}>
         <Text style={[styles.lineLeft, styles.lineTotal]}></Text>

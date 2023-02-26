@@ -9,7 +9,6 @@ export function Product(props) {
     brand,
     description,
     category,
-    name,
     price,
     thumbnail,
     onPress,

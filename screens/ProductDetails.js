@@ -38,6 +38,7 @@ function ProductDetails({ route }) {
         <View style={styles.infoContainer}>
           <Text style={styles.name}>{product.title}</Text>
           <Text style={styles.price}>{product.price}tl</Text>
+        <Text style={styles.rating}> puan = {product.rating}</Text>
           <Text style={styles.description}>{product.description}</Text>
           <Button onPress={onAddToCart} title="sepete ekle" />
         </View>

@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { View, Text, FlatList, StyleSheet } from "react-native";
+import { View, Text, FlatList, StyleSheet, Button } from "react-native";
 import { getProducts } from "../services/ProductsService.js";
 import { Product } from "../components/Product";
 import { useNavigation } from "@react-navigation/native";
@@ -7,7 +7,9 @@ import CartContext from "../CartContext.js";
 
 function ProductsList() {
   const navigation = useNavigation();
-  const { user, logout } = useContext(CartContext);
+
+  const { logout } = useContext(CartContext);
+
   function renderProduct({ item: product }) {
     return (
       <Product
@@ -24,6 +26,7 @@ function ProductsList() {
     const data = await getProducts();
     setProducts(data);
   };
+
   useEffect(() => {
     getProduct();
   }, []);
@@ -31,7 +34,6 @@ function ProductsList() {
 
   return (
     <>
-      <Text onPress={logout}>log out</Text>
       <FlatList
         style={styles.productsList}
         contentContainerStyle={styles.productsListContainer}
@@ -39,6 +41,7 @@ function ProductsList() {
         data={products}
         renderItem={renderProduct}
       />
+      <Button onPress={()=>navigation.navigate('Welcome')} title={"Çıkış Yap"}></Button>
     </>
   );
 }

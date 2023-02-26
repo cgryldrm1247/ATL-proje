@@ -1,6 +1,5 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet} from "react-native";
 import React, { createContext, useState } from "react";
-import { getProduct } from "./services/ProductsService.js";
 
 export const CartContext = createContext();
  export function CartProvider(props) {
