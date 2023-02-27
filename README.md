@@ -15,5 +15,8 @@ Uygulamayı login olmadan da kullanabilirsiniz uygulamanın içinde ürünler, �
 ürüne tıklandığında ürün detay sayfasına yönlendirilirsiniz ve sepete ekleme yapabilirsiniz, sağ üstte sepet yazan logoya tıklarsanız sepetinizde ne var görebilirsiniz.
 
 
+![](ezgif.com-video-to-gif.gif)
+
+
 ## İletişim
 cgryldrm1247@gmail.com
