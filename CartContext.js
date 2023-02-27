@@ -5,6 +5,8 @@ export const CartContext = createContext();
  export function CartProvider(props) {
   const [user, setUser] = useState(false);
   const [items, setItems] = useState([]);
+
+
   
   function login() {
     setUser(true);
