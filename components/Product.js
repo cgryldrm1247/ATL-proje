@@ -1,7 +1,6 @@
-import { useNavigation } from "@react-navigation/native";
-import React, { useContext } from "react";
+import React from "react";
 import { Text, Image, View, StyleSheet, TouchableOpacity } from "react-native";
-import CartContext from "../CartContext";
+
 
 
 export function Product(props) {
@@ -16,22 +15,8 @@ export function Product(props) {
     rating
   } = props;
 
-  const { user } = useContext(CartContext);
-  const navigation = useNavigation();
-
   return (
     <TouchableOpacity style={styles.card} onPress={onPress}>
-      <View>
-        <Text style={styles.favoruite}
-          onPress={
-            user
-              ? () => []
-              : () => navigation.navigate("Welcome")
-          }
-        >
-          BEĞEN
-        </Text>
-      </View>
       <Image style={styles.image} source={{ uri: thumbnail }} />
       <View style={styles.infoContainer}>
         <Text style={styles.name}>{brand}</Text>

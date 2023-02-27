@@ -32,6 +32,11 @@ function ProductsList() {
   }, []);
   if (!products) return null;
 
+  const handleLogout = () => {
+    logout();
+    navigation.navigate("Welcome");
+  };
+
   return (
     <>
       <FlatList
@@ -41,7 +46,7 @@ function ProductsList() {
         data={products}
         renderItem={renderProduct}
       />
-      <Button onPress={()=>navigation.navigate('Welcome')} title={"Çıkış Yap"}></Button>
+      <Button onPress={handleLogout} title={"Çıkış Yap"}></Button>
     </>
   );
 }

@@ -24,14 +24,13 @@ const styles = StyleSheet.create({
   welcomeContainer: {
     flex: 1,
     alignItems: "center",
-    justifyContent: "center",
+    justifyContent: "space-between",
+    paddingVertical:300,
   },
-  login: {
-    marginBottom: 10,
-  },
-  logout: {
-    marginTop: 10,
-  },
+  login:{
+    borderRadius:20
+  }
+ 
 });
 
 export default Welcome;
