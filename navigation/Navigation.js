@@ -1,65 +1,21 @@
-import {StyleSheet } from 'react-native'
-import React, { useContext } from 'react'
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { NavigationContainer } from '@react-navigation/native';
-import Welcome from '../screens/Welcome';
-import ProductsList from '../screens/ProductsList';
-import ProductDetails from '../screens/ProductDetails';
-import Cart from '../screens/Cart';
-import CartIcon from '../components/CartIcon';
-import CartContext from '../CartContext';
+import React from 'react';
+import {NavigationContainer} from '@react-navigation/native';
+import {createStackNavigator} from '@react-navigation/stack';
+import EpisodesList from './EpisodesList';
+import CharacterDetails from './CharacterDetails';
+import FavoriteCharacters from './FavoriteCharacters';
 
-const Stack = createNativeStackNavigator();
-
+const Stack = createStackNavigator
 const Navigation = () => {
-    const {user}= useContext(CartContext)
-
   return (
     <NavigationContainer>
-    <Stack.Navigator initialRouteName={user?'Products':'Welcome'} >
-      <Stack.Screen name="Welcome" component={Welcome} />
+      <Stack.Navigator initialRouteName="EpisodesList">
+        <Stack.Screen name="EpisodesList" component={EpisodesList} />
+        <Stack.Screen name="CharacterDetails" component={CharacterDetails} />
+        <Stack.Screen name="FavoriteCharacters" component={FavoriteCharacters} />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+};
 
-      <Stack.Screen
-        name="Products"
-        component={ProductsList}
-        options={({ navigation }) => ({
-          title: "Products",
-          headerRight: () => <CartIcon navigation={navigation} />,
-        })}
-      />
-      <Stack.Screen
-        name="ProductDetails"
-        component={ProductDetails}
-        options={({ navigation }) => ({
-          title: "Product Details",
-          headerRight: () => <CartIcon navigation={navigation} />,
-        })}
-      />
-      <Stack.Screen
-        name="Cart"
-        component={Cart}
-        options={({ navigation }) => ({
-          title: "Cart",
-          headerRight: () => <CartIcon navigation={navigation} />,
-        })}
-      />
-    </Stack.Navigator>
-  </NavigationContainer>
-  )
-}
-
-const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      textAlign: "center",
-      alignItems: "center",
-      justifyContent: "center",
-    },
-  
-    text: {
-      fontSize: 30,
-      fontWeight: "bold",
-    },
-  });
-
-export default Navigation
+export default Navigation;
